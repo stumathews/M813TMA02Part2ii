@@ -13,6 +13,7 @@ public class TMA02PartAii {
 
     public static void main(String[] args) 
     {
+        // AddProductToOrder
         Product product = TestData.PictureFrame;      
         Customer customer = TestData.Disney;     
         int orderNumber = 1;
@@ -27,7 +28,16 @@ public class TMA02PartAii {
         catch(ProductOutOfStock outOfStockException)
         {
             System.out.println(outOfStockException.getMessage());
-        }        
+        }   
+        
+        // AddProductReview
+        
+        ReviewManager reviewManager = new ReviewManager();
+        Review review = new Review("This is a nice Frame with good edges");
+        if(!reviewManager.IsAlreadyReviewedBy(product, customer) && (reviewManager.IsPassedBlackList(review)) )
+        {
+            reviewManager.AddCustomerReview(customer, product, review);
+        }
     }    
 }
 
