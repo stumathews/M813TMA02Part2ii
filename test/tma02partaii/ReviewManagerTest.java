@@ -5,6 +5,7 @@
  */
 package tma02partaii;
 
+import Test.TestData;
 import org.junit.After;
 import org.junit.AfterClass;
 import org.junit.Before;
@@ -37,52 +38,34 @@ public class ReviewManagerTest {
     public void tearDown() {
     }
 
-    /**
-     * Test of IsAlreadyReviewedBy method, of class ReviewManager.
-     */
-    @Test
-    public void testIsAlreadyReviewedBy() {
-        System.out.println("IsAlreadyReviewedBy");
-        Product product = null;
-        Customer customer = null;
-        ReviewManager instance = new ReviewManager();
-        Boolean expResult = null;
-        Boolean result = instance.IsAlreadyReviewedBy(product, customer);
-        assertEquals(expResult, result);
-        // TODO review the generated test code and remove the default call to fail.
-        fail("The test case is a prototype.");
-    }
-
-    /**
-     * Test of IsPassedBlackList method, of class ReviewManager.
-     */
-    @Test
-    public void testIsPassedBlackList() {
-        System.out.println("IsPassedBlackList");
-        Review review = null;
-        ReviewManager instance = new ReviewManager();
-        Boolean expResult = null;
-        Boolean result = instance.IsPassedBlackList(review);
-        assertEquals(expResult, result);
-        // TODO review the generated test code and remove the default call to fail.
-        fail("The test case is a prototype.");
-    }
-
-    /**
-     * Test of AddCustomerReview method, of class ReviewManager.
-     */
+   
     @Test
     public void testAddCustomerReview() {
-        System.out.println("AddCustomerReview");
-        Customer customer = null;
-        Product product = null;
-        Review review = null;
-        ReviewManager instance = new ReviewManager();
-        CustomerReview expResult = null;
-        CustomerReview result = instance.AddCustomerReview(customer, product, review);
-        assertEquals(expResult, result);
-        // TODO review the generated test code and remove the default call to fail.
-        fail("The test case is a prototype.");
+       ReviewManager reviewManager = new ReviewManager();
+       Review review = new Review("I personally love it");
+       Customer customer = new Customer("HomeDepot");
+       Product product = new Product("Mouse", 1.65f);
+       
+       int numReviewsBefore = reviewManager.reviews.size();
+       
+       reviewManager.AddCustomerReview(customer, product, review);
+
+       // number of reviews has increased       
+       assert( reviewManager.reviews.size() > numReviewsBefore);
+       
+       // contains a review for the product
+       assert(reviewManager.reviews.containsKey(product));
+       
+       // Contains the specific review
+       assert(reviewManager.reviews.get(product).stream().anyMatch((customerReview) -> (customerReview.getReview() == review)));
+       
+       // Ensure all assocations are created between product, customer, review on CustomerReview object
+       assert(reviewManager.reviews.get(product).stream().anyMatch((customerReview) -> (
+                       customerReview.getReview().equals(review) && 
+                       customerReview.getCustomer().equals(customer) &&
+                       customerReview.getProduct().equals(product))));
+       
     }
     
 }
+

@@ -18,7 +18,7 @@ public class OrderSystem
     }
     public void AddProductToOrder(Product product, Customer customer, Order order)
     {        
-        order.AddProduct(product);
+        order.AddProductToOrder(product);
     }
     
     public Boolean IsProductStocked(Product product)

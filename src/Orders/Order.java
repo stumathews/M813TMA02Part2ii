@@ -19,6 +19,7 @@ public class Order
     private final Customer customer;
     private final ArrayList<OrderItem> items = new ArrayList<>();
     private final Integer number;
+    private float amount;
     
     public Order(Integer number, Customer customer)
     {
@@ -26,19 +27,30 @@ public class Order
         this.number = number;
     }
     
-    public void AddOrderItem(Product product)
+    private void AddOrderItem(Product product)
     {
         items.add(new OrderItem(product));
     }
 
-    public void AddProduct(Product product)
+    public void AddProductToOrder(Product product)
     {
         AddOrderItem(product);
+        amount += product.getCost();
     }
     
     public Integer getNumber()
     {
         return number;
+    }
+    
+    public ArrayList<OrderItem> GetOrderItems()
+    {
+        return items;
+    }
+    
+    public float getAmount()
+    {
+        return amount;
     }
 }
 

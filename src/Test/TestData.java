@@ -25,22 +25,22 @@ public class TestData
     public static String DISNEY_NAME = "Disney";
     public static String APPLE_NAME = "Apple";
     
-    public static Product PictureFrame = new Product(PICTURE_FRAME);
-    public static Product LightBulb = new Product(LIGHT_BULB);
+    public static Product PictureFrame = new Product(PICTURE_FRAME, 2.50f);
+    public static Product LightBulb = new Product(LIGHT_BULB, 1.25f);
      
     public static Customer Disney = new Customer(DISNEY_NAME);
     public static Customer Apple = new Customer(APPLE_NAME);
     
-    public static Review review1 = new Review("I like it!");
-    public static Review review2 = new Review("I hate it!");
+    public static Review loveReview = new Review("I love it!");
+    public static Review hateReview = new Review("I hate it!");
     
     public static HashMap<Product, List<CustomerReview>> Reviews = new HashMap<Product, List<CustomerReview>>()
     {{
         put(PictureFrame, new ArrayList<CustomerReview>()
             {{ 
-                add(new CustomerReview(Disney, PictureFrame, review1));
-                add(new CustomerReview(Apple, PictureFrame, review1));
-                add(new CustomerReview(Apple, LightBulb, review2)); 
+                add(new CustomerReview(Disney, PictureFrame, loveReview));
+                add(new CustomerReview(Apple, PictureFrame, loveReview));
+                add(new CustomerReview(Apple, LightBulb, hateReview)); 
             }});
     }};
     

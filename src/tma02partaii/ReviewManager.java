@@ -5,6 +5,7 @@
  */
 package tma02partaii;
 
+import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 
@@ -38,6 +39,16 @@ public class ReviewManager
     public CustomerReview AddCustomerReview(Customer customer, Product product, Review review)
     {
         CustomerReview customerReview = new CustomerReview(customer, product, review);
+        if(reviews.containsKey(product))
+        {
+            reviews.get(product).add(customerReview);
+        }
+        else
+        {
+            ArrayList<CustomerReview> customerReviews = new ArrayList<>();
+            customerReviews.add(customerReview);
+            reviews.put(product, customerReviews);
+        }
         return customerReview;
     }
 }
