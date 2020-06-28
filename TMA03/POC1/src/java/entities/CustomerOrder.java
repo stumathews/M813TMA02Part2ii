@@ -6,15 +6,17 @@
 package entities;
 
 import java.io.Serializable;
+import java.util.List;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.ManyToOne;
+import javax.persistence.OneToMany;
 
 
 @Entity
-public class Order implements Serializable {
+public class CustomerOrder implements Serializable {
 
     private static final long serialVersionUID = 1L;
     @Id
@@ -25,7 +27,18 @@ public class Order implements Serializable {
      * Many orders for a customer
      */
     @ManyToOne
-    private Customer customer;   
+    private Customer customer;  
+    
+    @OneToMany(mappedBy = "customerOrder")
+    private List<OrderItem> items;
+
+    public List<OrderItem> getItems() {
+        return items;
+    }
+
+    public void setItems(List<OrderItem> items) {
+        this.items = items;
+    }
     
     private int number;    
     private float amount;
@@ -75,10 +88,10 @@ public class Order implements Serializable {
     @Override
     public boolean equals(Object object) {
         // TODO: Warning - this method won't work in the case the id fields are not set
-        if (!(object instanceof Order)) {
+        if (!(object instanceof CustomerOrder)) {
             return false;
         }
-        Order other = (Order) object;
+        CustomerOrder other = (CustomerOrder) object;
         if ((this.id == null && other.id != null) || (this.id != null && !this.id.equals(other.id))) {
             return false;
         }

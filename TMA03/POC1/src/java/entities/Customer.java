@@ -28,7 +28,7 @@ public class Customer implements Serializable {
      * Customer can have many orders at once
      */
     @OneToMany(mappedBy = "customer")
-    private List<Order> orders;
+    private List<CustomerOrder> orders;
     
     /**
      * Customer can have many reviews at once
@@ -44,7 +44,7 @@ public class Customer implements Serializable {
         this.id = id;
     }
 
-    public List<Order> getOrders() {
+    public List<CustomerOrder> getOrders() {
         return orders;
     }
 

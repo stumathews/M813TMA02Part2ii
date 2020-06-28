@@ -10,11 +10,16 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.ManyToOne;
 import javax.persistence.OneToOne;
 
 
 @Entity
 public class OrderItem implements Serializable {
+
+    
+
+    
 
     private static final long serialVersionUID = 1L;
     @Id
@@ -28,6 +33,20 @@ public class OrderItem implements Serializable {
      */
     @OneToOne
     private Product product;
+    
+    /*Many items in an order*/
+
+    @ManyToOne
+    private CustomerOrder customerOrder;
+
+    public CustomerOrder getCustomerOrder() {
+        return customerOrder;
+    }
+
+    public void setCustomerOrder(CustomerOrder customerOrder) {
+        this.customerOrder = customerOrder;
+    }
+    
     
     public Long getId() {
         return id;
