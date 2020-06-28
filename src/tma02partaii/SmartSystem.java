@@ -24,6 +24,14 @@ public class SmartSystem
         orderSystem = new OrderSystem();
     }
             
+    /**
+     * Validates that product can be added to order and does so
+     * @param product
+     * @param customer
+     * @param order
+     * @return
+     * @throws ProductOutOfStock 
+     */
     public Orders.Order AddProductToOrder(Product product, Customer customer, Orders.Order order) throws ProductOutOfStock
     {        
         if(!orderSystem.IsProductStocked(product))

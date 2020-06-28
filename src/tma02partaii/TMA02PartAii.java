@@ -30,13 +30,12 @@ public class TMA02PartAii {
             System.out.println(outOfStockException.getMessage());
         }   
         
-        // AddProductReview
-        
+        // AddProductReview        
         ReviewManager reviewManager = new ReviewManager();
         Review review = new Review("This is a nice Frame with good edges");
         if(!reviewManager.IsAlreadyReviewedBy(product, customer) && (reviewManager.IsPassedBlackList(review)) )
         {
-            reviewManager.AddCustomerReview(customer, product, review);
+            reviewManager.reviewProduct(customer, product, review);
         }
     }    
 }

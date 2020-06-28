@@ -8,13 +8,12 @@ package tma02partaii;
 import java.util.Objects;
 
 /**
- *
- * @author cex
+ * Product that can be purchased. 
+ * It consists of a purchase price(cost) and a product name
  */
 public class Product
 {
-
-    
+   
     private final String name;
     private final float cost;
     

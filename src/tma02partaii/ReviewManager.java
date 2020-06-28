@@ -10,8 +10,7 @@ import java.util.HashMap;
 import java.util.List;
 
 /**
- *
- * @author cex
+ * Responsible for tracking reviews
  */
 public class ReviewManager 
 {
@@ -24,6 +23,12 @@ public class ReviewManager
         reviews = Test.TestData.Reviews;
     }
     
+    /**
+     * Checks to see if this product already has a review by this customer
+     * @param product to check for a review for
+     * @param customer to check that a review exists for the product or not
+     * @return 
+     */
     public Boolean IsAlreadyReviewedBy(Product product, Customer customer)
     { 
         return !reviews.containsKey(product) 
@@ -31,21 +36,37 @@ public class ReviewManager
                 : reviews.get(product).stream().anyMatch((review) -> (review.getCustomer().equals(customer)));
     }
     
+    /**
+     * ASk the blackList review if this review is suitable
+     * @param review under inspection
+     * @return true if suitable, false otherwise
+     */
     public Boolean IsPassedBlackList(Review review)
     {
         return blackListService.IsReviewSuitable(review);
     }
     
-    public CustomerReview AddCustomerReview(Customer customer, Product product, Review review)
+    /**
+     * Adds the review for a product
+     * @param customer performing the review
+     * @param product being reviewed
+     * @param review for the product by the customer
+     * @return 
+     */
+    public CustomerReview reviewProduct(Customer customer, Product product, Review review)
     {
         CustomerReview customerReview = new CustomerReview(customer, product, review);
+        List<CustomerReview> productReviews;
+        ArrayList<CustomerReview> customerReviews = new ArrayList<>();
+        
+        // Add to existing reviews for product or make place for new review
         if(reviews.containsKey(product))
         {
-            reviews.get(product).add(customerReview);
+            productReviews = reviews.get(product);
+            productReviews.add(customerReview);
         }
         else
-        {
-            ArrayList<CustomerReview> customerReviews = new ArrayList<>();
+        {           
             customerReviews.add(customerReview);
             reviews.put(product, customerReviews);
         }

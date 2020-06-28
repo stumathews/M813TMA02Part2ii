@@ -6,14 +6,17 @@
 package tma02partaii;
 
 /**
- *
- * @author cex
+ * Responsible for checking if review is suitable or not
  */
-class BlackListSystem {
-
+class BlackListSystem 
+{
+    /**
+     * Checks if the review test contains unsuitable text
+     * @param review to check
+     * @return true if unsuitable, false otherwise
+     */
     Boolean IsReviewSuitable(Review review) 
     {
         return !review.getText().matches("hate");
-    }
-    
+    }    
 }

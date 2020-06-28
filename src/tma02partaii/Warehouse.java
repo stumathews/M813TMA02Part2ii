@@ -17,7 +17,6 @@ public class Warehouse
     {
         stock = initialStock;
     }
-    
     /**
      * Checks if the product is stocked
      * @param product

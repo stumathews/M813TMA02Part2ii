@@ -15,8 +15,7 @@ import tma02partaii.Review;
 
 
 /**
- *
- * @author cex
+ * Holds test data
  */
 public class TestData 
 {

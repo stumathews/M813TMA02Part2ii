@@ -10,15 +10,21 @@ import tma02partaii.Customer;
 import tma02partaii.Product;
 
 /**
- *
+ * Represents an order for a Customer
+ * Order may contain many order items (line items) presenting products on order
  * @author cex
  */
-
 public class Order
 {
     private final Customer customer;
+    
+    // Order items
     private final ArrayList<OrderItem> items = new ArrayList<>();
+    
+    // orders have unique numbers
     private final Integer number;
+    
+    //order has a running cost of all order items
     private float amount;
     
     public Order(Integer number, Customer customer)

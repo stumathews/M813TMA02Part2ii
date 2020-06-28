@@ -12,7 +12,9 @@ import org.junit.Before;
 import org.junit.BeforeClass;
 import org.junit.Test;
 import static org.junit.Assert.*;
+import tma02partaii.Customer;
 import tma02partaii.Product;
+import tma02partaii.Warehouse;
 
 /**
  *
@@ -22,26 +24,9 @@ public class OrderTest {
     
     public OrderTest() {
     }
-    
-    @BeforeClass
-    public static void setUpClass() {
-    }
-    
-    @AfterClass
-    public static void tearDownClass() {
-    }
-    
-    @Before
-    public void setUp() {
-    }
-    
-    @After
-    public void tearDown() {
-    }
-
-   
+           
     /**
-     * Test of AddProductToOrder method, of class Order.
+     * Verifies that number of order items increases
      */
     @Test
     public void testAddProductToOrderIncreasesOrderItems() 
@@ -52,10 +37,12 @@ public class OrderTest {
         int afterCost = order.GetOrderItems().size();
         
         assert(afterCost > beforeCost);
-        assert(afterCost == beforeCost+1);       
-        
+        assert(afterCost == beforeCost+1); 
     }
     
+    /**
+     * Verify that order amount increases
+     */
     @Test
     public void testAddProductToOrderAndOrderAmountIncreases()
     {
@@ -68,7 +55,11 @@ public class OrderTest {
         assert( order.getAmount() == beforeAmount + product.getCost() );
     }
     
-    @Test public void testProductAssociatedWithOrder()
+    /**
+     * Verifies that product is correctly associated with order
+     */
+    @Test 
+    public void testProductAssociatedWithOrder()
     {
         Product product = TestData.PictureFrame;
         Order order = new Order(1, TestData.Apple);

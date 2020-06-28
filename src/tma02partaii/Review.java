@@ -8,12 +8,9 @@ package tma02partaii;
 import java.util.Objects;
 
 /**
- *
- * @author cex
+ * Encapsulates a review including the actual textual review made
  */
-public class Review {
-
-    
+public class Review {    
 
     private final String text;
     public Review(String text)

@@ -12,14 +12,13 @@ import java.util.Objects;
 import java.util.Set;
 
 /**
- *
- * @author cex
+ * Represents a customer Persona
+ * Contains a list of customer's orders
  */
 
 public class Customer 
 {
-
-    
+   
     private final String name;
     private final Map<Integer, Order> orders;
     

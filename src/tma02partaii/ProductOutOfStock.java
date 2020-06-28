@@ -6,8 +6,7 @@
 package tma02partaii;
 
 /**
- *
- * @author cex
+ * Custom exception that indicates that product is out of stock in the warehouse
  */
 class ProductOutOfStock extends Exception 
 {

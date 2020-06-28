@@ -26,19 +26,10 @@ public class ReviewManagerTest {
     public static void setUpClass() {
     }
     
-    @AfterClass
-    public static void tearDownClass() {
-    }
-    
-    @Before
-    public void setUp() {
-    }
-    
-    @After
-    public void tearDown() {
-    }
 
-   
+    /**
+     * Verifies that number of reviews increase after calling AddCustomerReview
+     */
     @Test
     public void testAddCustomerReview() {
        ReviewManager reviewManager = new ReviewManager();
@@ -48,7 +39,7 @@ public class ReviewManagerTest {
        
        int numReviewsBefore = reviewManager.reviews.size();
        
-       reviewManager.AddCustomerReview(customer, product, review);
+       reviewManager.reviewProduct(customer, product, review);
 
        // number of reviews has increased       
        assert( reviewManager.reviews.size() > numReviewsBefore);
