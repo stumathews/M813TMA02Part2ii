@@ -13,21 +13,39 @@ import javax.persistence.Id;
 import javax.persistence.ManyToOne;
 import javax.persistence.OneToOne;
 
-/**
- *
- * @author cex
- */
+
 @Entity
 public class CustomerReview implements Serializable {
 
-    @ManyToOne
-    private Customer customer;
+    
 
     private static final long serialVersionUID = 1L;
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
-    private Long id;
+    private Long id;  
 
+    /**
+     * Many CustomerReviews can belong to one customer
+     */
+    
+    @ManyToOne
+    private Customer customer;
+  
+    /**
+     * Many CustomerReviews can be for a product.
+     * Note: Need to constrain a customer review and product to be unique ie
+     * Only one customer review can exist for one particular product so we need
+     * a composite primary key of customer and product
+     */    
+    @ManyToOne
+    private Product product;
+    
+    /**
+     * One customerReview has a single review
+     */
+    @OneToOne
+    private Review review;
+    
     public Long getId() {
         return id;
     }
@@ -35,13 +53,6 @@ public class CustomerReview implements Serializable {
     public void setId(Long id) {
         this.id = id;
     }
-
-  
-    @ManyToOne
-    private Product product;
-    
-    @OneToOne
-    private Review review;
 
     public Review getReview() {
         return review;

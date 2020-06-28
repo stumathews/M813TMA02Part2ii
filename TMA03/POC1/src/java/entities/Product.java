@@ -13,10 +13,6 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.OneToMany;
 
-/**
- *
- * @author cex
- */
 @Entity
 public class Product implements Serializable {
 
@@ -35,6 +31,10 @@ public class Product implements Serializable {
     
     private String name;    
     private float cost;
+    
+    /**
+     * One Product can have many customer reviews
+     */
     @OneToMany(mappedBy = "product")
     private List<CustomerReview> customerReviews;
 

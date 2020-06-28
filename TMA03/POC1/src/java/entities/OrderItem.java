@@ -12,10 +12,7 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.OneToOne;
 
-/**
- *
- * @author cex
- */
+
 @Entity
 public class OrderItem implements Serializable {
 
@@ -23,7 +20,15 @@ public class OrderItem implements Serializable {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Long id;
-
+    
+    
+    /**
+     * One Order Item to one product
+     * Note: dont want the product to show which items it is in so uindirectional
+     */
+    @OneToOne
+    private Product product;
+    
     public Long getId() {
         return id;
     }
@@ -32,10 +37,6 @@ public class OrderItem implements Serializable {
         this.id = id;
     }
     
-    // dont want the product to show which items it is in so uindirectional
-    @OneToOne
-    private Product product;
-
     public Product getProduct() {
         return product;
     }

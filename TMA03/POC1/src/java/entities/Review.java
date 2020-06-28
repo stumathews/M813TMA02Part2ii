@@ -12,10 +12,7 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.OneToOne;
 
-/**
- *
- * @author cex
- */
+
 @Entity
 public class Review implements Serializable {
 
@@ -34,6 +31,9 @@ public class Review implements Serializable {
     
     private String text;
     
+    /**
+     * One Review belongs to one customer
+     */
     @OneToOne
     private CustomerReview customerReview;
 

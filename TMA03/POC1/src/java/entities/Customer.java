@@ -14,18 +14,28 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.OneToMany;
 
-/**
- *
- * @author cex
- */
+
 @Entity
 public class Customer implements Serializable {
 
     private static final long serialVersionUID = 1L;
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
-    private Long id;
-
+    private Long id;    
+    private String name;
+    
+    /**
+     * Customer can have many orders at once
+     */
+    @OneToMany(mappedBy = "customer")
+    private List<Order> orders;
+    
+    /**
+     * Customer can have many reviews at once
+     */
+    @OneToMany(mappedBy = "customer")
+    private List<CustomerReview> customerReviews;
+    
     public Long getId() {
         return id;
     }
@@ -34,16 +44,9 @@ public class Customer implements Serializable {
         this.id = id;
     }
 
-    @OneToMany(mappedBy = "customer")
-    private List<Order> orders;
-    
-    @OneToMany(mappedBy = "customer")
-    private List<CustomerReview> customerReviews;
-
     public List<Order> getOrders() {
         return orders;
     }
-    private String name;
 
     public String getName() {
         return name;

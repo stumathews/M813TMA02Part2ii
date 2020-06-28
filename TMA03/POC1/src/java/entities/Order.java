@@ -12,10 +12,7 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.ManyToOne;
 
-/**
- *
- * @author cex
- */
+
 @Entity
 public class Order implements Serializable {
 
@@ -23,7 +20,16 @@ public class Order implements Serializable {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Long id;
-
+    
+    /**
+     * Many orders for a customer
+     */
+    @ManyToOne
+    private Customer customer;   
+    
+    private int number;    
+    private float amount;
+    
     public Long getId() {
         return id;
     }
@@ -31,14 +37,7 @@ public class Order implements Serializable {
     public void setId(Long id) {
         this.id = id;
     }
-    
-    
-    @ManyToOne
-    private Customer customer;    
-    
-    private int number;    
-    private float amount;
-
+        
     public float getAmount() {
         return amount;
     }
