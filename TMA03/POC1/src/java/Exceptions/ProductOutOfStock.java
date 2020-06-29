@@ -5,7 +5,7 @@
  */
 package Exceptions;
 
-import BOLO.Product;
+import BusinessLayer.Product;
 
 /**
  * Custom exception that indicates that product is out of stock in the warehouse

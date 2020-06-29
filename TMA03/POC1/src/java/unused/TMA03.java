@@ -6,12 +6,12 @@
 package unused;
 
 import Exceptions.ProductOutOfStock;
-import BOLO.Review;
-import BOLO.Product;
-import BOLO.Customer;
-import BOLO.Order;
-import BSL.ReviewManager;
-import BSL.SmartSystem;
+import BusinessLayer.Review;
+import BusinessLayer.Product;
+import BusinessLayer.Customer;
+import BusinessLayer.Order;
+import BusinessLayer.ReviewManager;
+import BusinessLayer.SmartSystem;
 import Test.TestData;
 import Exceptions.ProductOutOfStock;
 

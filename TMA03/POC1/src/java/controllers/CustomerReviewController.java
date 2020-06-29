@@ -1,6 +1,6 @@
 package controllers;
 
-import entities.CustomerReview;
+import DataAccessLayer.CustomerReview;
 import controllers.util.JsfUtil;
 import controllers.util.PaginationHelper;
 import facades.CustomerReviewFacade;

@@ -5,10 +5,10 @@
  */
 package Test;
 
-import BOLO.Customer;
-import BOLO.Product;
-import BOLO.CustomerReview;
-import BOLO.Review;
+import BusinessLayer.Customer;
+import BusinessLayer.Product;
+import BusinessLayer.CustomerReview;
+import BusinessLayer.Review;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;

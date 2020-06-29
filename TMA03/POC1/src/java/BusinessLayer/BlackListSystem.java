@@ -3,9 +3,9 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package BSL;
+package BusinessLayer;
 
-import BOLO.Review;
+import BusinessLayer.Review;
 
 /**
  * Responsible for checking if review is suitable or not

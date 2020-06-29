@@ -1,6 +1,6 @@
 package controllers;
 
-import entities.Review;
+import DataAccessLayer.Review;
 import controllers.util.JsfUtil;
 import controllers.util.PaginationHelper;
 import facades.ReviewFacade;

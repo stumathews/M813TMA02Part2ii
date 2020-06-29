@@ -3,24 +3,46 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package entities;
+package DataAccessLayer;
 
 import java.io.Serializable;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.ManyToOne;
 import javax.persistence.OneToOne;
 
 
 @Entity
-public class Review implements Serializable {
-
+public class OrderItem implements Serializable {
+    
     private static final long serialVersionUID = 1L;
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
-    private Long id;
+    private Long id;    
+    
+    /**
+     * One Order Item to one product
+     * Note: don't want the product to show which items it is in so uni-directional
+     */
+    @OneToOne
+    private Product product;
+    
+    /*Many items in an order*/
 
+    @ManyToOne
+    private CustomerOrder customerOrder;
+
+    public CustomerOrder getCustomerOrder() {
+        return customerOrder;
+    }
+
+    public void setCustomerOrder(CustomerOrder customerOrder) {
+        this.customerOrder = customerOrder;
+    }
+    
+    
     public Long getId() {
         return id;
     }
@@ -29,22 +51,14 @@ public class Review implements Serializable {
         this.id = id;
     }
     
-    private String text;
-    
-    /**
-     * One Review belongs to one customer
-     */
-    @OneToOne
-    private CustomerReview customerReview;
-
-    public String getText() {
-        return text;
+    public Product getProduct() {
+        return product;
     }
 
-    public void setText(String text) {
-        this.text = text;
+    public void setProduct(Product product) {
+        this.product = product;
     }
-    
+
     @Override
     public int hashCode() {
         int hash = 0;
@@ -55,10 +69,10 @@ public class Review implements Serializable {
     @Override
     public boolean equals(Object object) {
         // TODO: Warning - this method won't work in the case the id fields are not set
-        if (!(object instanceof Review)) {
+        if (!(object instanceof OrderItem)) {
             return false;
         }
-        Review other = (Review) object;
+        OrderItem other = (OrderItem) object;
         if ((this.id == null && other.id != null) || (this.id != null && !this.id.equals(other.id))) {
             return false;
         }
@@ -67,7 +81,7 @@ public class Review implements Serializable {
 
     @Override
     public String toString() {
-        return "entities.Review[ id=" + id + " ]";
+        return "entities.OrderItem[ id=" + id + " ]";
     }
     
 }

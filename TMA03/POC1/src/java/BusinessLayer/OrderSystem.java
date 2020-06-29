@@ -1,8 +1,8 @@
-package BSL;
+package BusinessLayer;
 
-import BOLO.Customer;
-import BOLO.Order;
-import BOLO.Product;
+import BusinessLayer.Customer;
+import BusinessLayer.Order;
+import BusinessLayer.Product;
 
 
 /**

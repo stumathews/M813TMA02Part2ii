@@ -3,38 +3,45 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package entities;
+package DataAccessLayer;
 
 import java.io.Serializable;
 import java.util.List;
-import java.util.Map;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
 
 
 @Entity
-public class Customer implements Serializable {
+public class CustomerOrder implements Serializable {
 
     private static final long serialVersionUID = 1L;
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
-    private Long id;    
-    private String name;
+    private Long id;
     
     /**
-     * Customer can have many orders at once
+     * Many orders for a customer
      */
-    @OneToMany(mappedBy = "customer")
-    private List<CustomerOrder> orders;
+    @ManyToOne
+    private Customer customer;  
     
-    /**
-     * Customer can have many reviews at once
-     */
-    @OneToMany(mappedBy = "customer")
-    private List<CustomerReview> customerReviews;
+    @OneToMany(mappedBy = "customerOrder")
+    private List<OrderItem> items;
+
+    public List<OrderItem> getItems() {
+        return items;
+    }
+
+    public void setItems(List<OrderItem> items) {
+        this.items = items;
+    }
+    
+    private int number;    
+    private float amount;
     
     public Long getId() {
         return id;
@@ -43,17 +50,31 @@ public class Customer implements Serializable {
     public void setId(Long id) {
         this.id = id;
     }
-
-    public List<CustomerOrder> getOrders() {
-        return orders;
+        
+    public float getAmount() {
+        return amount;
     }
 
-    public String getName() {
-        return name;
+    public void setAmount(float amount) {
+        this.amount = amount;
     }
 
-    public void setName(String name) {
-        this.name = name;
+
+    public int getNumber() {
+        return number;
+    }
+
+    public void setNumber(int number) {
+        this.number = number;
+    }
+
+
+    public Customer getCustomer() {
+        return customer;
+    }
+
+    public void setCustomer(Customer customer) {
+        this.customer = customer;
     }
 
 
@@ -67,10 +88,10 @@ public class Customer implements Serializable {
     @Override
     public boolean equals(Object object) {
         // TODO: Warning - this method won't work in the case the id fields are not set
-        if (!(object instanceof Customer)) {
+        if (!(object instanceof CustomerOrder)) {
             return false;
         }
-        Customer other = (Customer) object;
+        CustomerOrder other = (CustomerOrder) object;
         if ((this.id == null && other.id != null) || (this.id != null && !this.id.equals(other.id))) {
             return false;
         }
@@ -79,7 +100,7 @@ public class Customer implements Serializable {
 
     @Override
     public String toString() {
-        return "entities.Customer[ id=" + id + " ]";
+        return "entities.Order[ id=" + id + " ]";
     }
     
 }

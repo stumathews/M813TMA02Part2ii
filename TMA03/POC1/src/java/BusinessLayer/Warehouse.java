@@ -1,6 +1,6 @@
-package BSL;
+package BusinessLayer;
 
-import BOLO.Product;
+import BusinessLayer.Product;
 import java.util.HashMap;
 
 /**

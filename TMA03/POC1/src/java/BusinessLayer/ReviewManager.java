@@ -3,12 +3,12 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package BSL;
+package BusinessLayer;
 
-import BOLO.Review;
-import BOLO.CustomerReview;
-import BOLO.Product;
-import BOLO.Customer;
+import BusinessLayer.Review;
+import BusinessLayer.CustomerReview;
+import BusinessLayer.Product;
+import BusinessLayer.Customer;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;

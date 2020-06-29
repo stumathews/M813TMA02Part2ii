@@ -3,51 +3,24 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package entities;
+package DataAccessLayer;
 
 import java.io.Serializable;
+import java.util.List;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
-import javax.persistence.ManyToOne;
-import javax.persistence.OneToOne;
-
+import javax.persistence.OneToMany;
 
 @Entity
-public class OrderItem implements Serializable {
-
-    
-
-    
+public class Product implements Serializable {
 
     private static final long serialVersionUID = 1L;
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Long id;
-    
-    
-    /**
-     * One Order Item to one product
-     * Note: dont want the product to show which items it is in so uindirectional
-     */
-    @OneToOne
-    private Product product;
-    
-    /*Many items in an order*/
 
-    @ManyToOne
-    private CustomerOrder customerOrder;
-
-    public CustomerOrder getCustomerOrder() {
-        return customerOrder;
-    }
-
-    public void setCustomerOrder(CustomerOrder customerOrder) {
-        this.customerOrder = customerOrder;
-    }
-    
-    
     public Long getId() {
         return id;
     }
@@ -56,12 +29,30 @@ public class OrderItem implements Serializable {
         this.id = id;
     }
     
-    public Product getProduct() {
-        return product;
+    private String name;    
+    private float cost;
+    
+    /**
+     * One Product can have many customer reviews
+     */
+    @OneToMany(mappedBy = "product")
+    private List<CustomerReview> customerReviews;
+
+    public float getCost() {
+        return cost;
     }
 
-    public void setProduct(Product product) {
-        this.product = product;
+    public void setCost(float cost) {
+        this.cost = cost;
+    }
+
+
+    public String getName() {
+        return name;
+    }
+
+    public void setName(String name) {
+        this.name = name;
     }
 
 
@@ -75,10 +66,10 @@ public class OrderItem implements Serializable {
     @Override
     public boolean equals(Object object) {
         // TODO: Warning - this method won't work in the case the id fields are not set
-        if (!(object instanceof OrderItem)) {
+        if (!(object instanceof Product)) {
             return false;
         }
-        OrderItem other = (OrderItem) object;
+        Product other = (Product) object;
         if ((this.id == null && other.id != null) || (this.id != null && !this.id.equals(other.id))) {
             return false;
         }
@@ -87,7 +78,7 @@ public class OrderItem implements Serializable {
 
     @Override
     public String toString() {
-        return "entities.OrderItem[ id=" + id + " ]";
+        return "entities.Product[ id=" + id + " ]";
     }
     
 }

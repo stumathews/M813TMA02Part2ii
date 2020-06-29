@@ -1,6 +1,6 @@
 package controllers;
 
-import entities.Product;
+import DataAccessLayer.Product;
 import controllers.util.JsfUtil;
 import controllers.util.PaginationHelper;
 import facades.ProductFacade;

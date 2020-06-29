@@ -1,6 +1,6 @@
 package controllers;
 
-import entities.CustomerOrder;
+import DataAccessLayer.CustomerOrder;
 import controllers.util.JsfUtil;
 import controllers.util.PaginationHelper;
 import facades.CustomerOrderFacade;

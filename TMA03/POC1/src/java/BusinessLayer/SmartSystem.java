@@ -3,11 +3,11 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package BSL;
+package BusinessLayer;
 
-import BOLO.Customer;
-import BOLO.Order;
-import BOLO.Product;
+import BusinessLayer.Customer;
+import BusinessLayer.Order;
+import BusinessLayer.Product;
 import Exceptions.ProductOutOfStock;
 
 

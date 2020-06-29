@@ -3,10 +3,10 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package BOLO;
+package BusinessLayer;
 
-import BOLO.Product;
-import BOLO.Customer;
+import BusinessLayer.Product;
+import BusinessLayer.Customer;
 
 /**
  *

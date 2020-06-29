@@ -1,4 +1,4 @@
-package BOLO;
+package BusinessLayer;
 
 import java.util.Objects;
 

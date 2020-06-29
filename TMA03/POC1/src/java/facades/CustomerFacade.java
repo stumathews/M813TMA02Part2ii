@@ -5,7 +5,7 @@
  */
 package facades;
 
-import entities.Customer;
+import DataAccessLayer.Customer;
 import javax.ejb.Stateless;
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;

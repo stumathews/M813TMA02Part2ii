@@ -1,6 +1,6 @@
 package controllers;
 
-import entities.OrderItem;
+import DataAccessLayer.OrderItem;
 import controllers.util.JsfUtil;
 import controllers.util.PaginationHelper;
 import facades.OrderItemFacade;
